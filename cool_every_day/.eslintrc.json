@@ -33,8 +33,13 @@
                         "position": "before"
                     },
                     {
+                        "pattern": "next/*",
+                        "group": "builtin",
+                        "position": "before"
+                    },
+                    {
                         "pattern": "./styles.css",
-                        "group": "external",
+                        "group": "internal",
                         "position": "before"
                     },
                     // {
@@ -48,17 +53,27 @@
                         "position": "before"
                     },
                     {
+                        "pattern": "@yamada-ui/**",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@/components",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
                         "pattern": "@/components/**",
                         "group": "internal",
                         "position": "before"
                     },
                     {
-                        "pattern": "@/share/interface/**",
+                        "pattern": "@/hooks",
                         "group": "internal",
                         "position": "before"
                     },
                     {
-                        "pattern": "@/share/data/**",
+                        "pattern": "@/hooks/**",
                         "group": "internal",
                         "position": "before"
                     }

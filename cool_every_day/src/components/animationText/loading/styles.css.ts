@@ -26,6 +26,26 @@ const styles = {
     anime_box: style({
         animation: `${popupAnimation} 5s cubic-bezier(0.22, 1, 0.36, 1) forwards`,
     }),
+    completed_text_container: style({
+        display: 'flex',
+        flexDirection: 'column', // 縦に並べる
+        alignItems: 'center', // 中央揃え
+        position: 'absolute',
+        transform: 'translate(-50%, -50%)', // 要素の中心に位置させる
+        color: 'white',
+        zIndex: '101',
+        fontSize: '10vw',
+        fontWeight: 'bold',
+    }),
+    loaded_text_container: style({
+        display: 'flex',
+        position: 'absolute',
+        transform: 'translate(-50%, -50%)', // 要素の中心に位置させる
+        color: 'white',
+        zIndex: '101',
+        fontSize: '10vw',
+        fontWeight: 'bold',
+    }),
 }
 
 export default styles

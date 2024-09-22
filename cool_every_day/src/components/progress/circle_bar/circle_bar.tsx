@@ -4,11 +4,13 @@ import React from 'react'
 import { CircleProgress } from '@yamada-ui/react'
 import { UIProvider } from '@yamada-ui/react'
 
-import { useWindow } from '@/hooks/view/view.hooks'
+import styles from './styles.css'
 
+import { useWindow } from '@/hooks/view/view.hooks'
 interface props {
     progress: number
 }
+
 export function CircleBar(props: props) {
     const { windowSize } = useWindow()
 
@@ -20,21 +22,14 @@ export function CircleBar(props: props) {
     return (
         <UIProvider>
             <div
+                className={styles.circle_container}
                 style={{
-                    display: 'flex',
-                    position: 'absolute',
                     top: `${windowSize.height / 2}px`,
                     left: `${windowSize.width / 2}px`,
-                    transform: 'translate(-50%, -50%)', // 要素の中心に位置させる
-                    color: 'white',
-                    zIndex: '100',
-                    fontSize: '10vw',
-                    fontWeight: 'bold',
                 }}
             >
                 {(props.progress / 300) * 100 >= 101 ? (
                     <CircleProgress
-                        value={props.progress}
                         boxSize={32}
                         thickness={3}
                         color={'#9223FF'}
@@ -51,15 +46,6 @@ export function CircleBar(props: props) {
                         trackColor={'rgba(0,0,0,0)'}
                     />
                 )}
-
-                {/* <CircularProgress
-                size={200}
-                sx={{
-                    color: '#9223FF',
-                }}
-                variant="determinate"
-                value={(progress / 300) * 100}
-            /> */}
             </div>
         </UIProvider>
     )

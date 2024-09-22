@@ -10,6 +10,13 @@
     overflow: hidden;
 }
 
+main {
+    height: 100dvh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
 @font-face {
     font-family: "YourFontName";
     src: url("/src/app/fonts/DEATHNOTEFont.ttf") format("truetype");

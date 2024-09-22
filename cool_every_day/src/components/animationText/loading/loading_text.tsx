@@ -3,10 +3,9 @@ import React from 'react'
 
 import styles from './styles.css'
 
-// import { useRouter } from 'next/router'
+import { useWindow } from '@/hooks/view/view.hooks'
 
 import { greatVibes } from '@/app/fonts/styles.font'
-import { useWindow } from '@/hooks/view/view.hooks'
 
 interface props {
     type: 'loaded' | 'completed'
@@ -25,19 +24,10 @@ export function LoadingText(props: props) {
     if (props.type === 'completed') {
         return (
             <div
-                className={`${greatVibes.className} ${styles.anime_box}`} // アニメーションのクラスを追加
+                className={`${greatVibes.className} ${styles.anime_box} ${styles.completed_text_container}`}
                 style={{
-                    display: 'flex',
-                    flexDirection: 'column', // 縦に並べる
-                    alignItems: 'center', // 中央揃え
-                    position: 'absolute',
                     top: `${windowSize.height / 2}px`,
                     left: `${windowSize.width / 2}px`,
-                    transform: 'translate(-50%, -50%)', // 要素の中心に位置させる
-                    color: 'white',
-                    zIndex: '101',
-                    fontSize: '10vw',
-                    fontWeight: 'bold',
                 }}
             >
                 <div>Welcome</div>
@@ -49,17 +39,10 @@ export function LoadingText(props: props) {
         return (
             <div
                 style={{
-                    display: 'flex',
-                    position: 'absolute',
                     top: `${windowSize.height / 2}px`,
                     left: `${windowSize.width / 2}px`,
-                    transform: 'translate(-50%, -50%)', // 要素の中心に位置させる
-                    color: 'white',
-                    zIndex: '101',
-                    fontSize: '10vw',
-                    fontWeight: 'bold',
                 }}
-                className={greatVibes.className}
+                className={`${greatVibes.className}  ${styles.loaded_text_container}`}
             >
                 {/* Now Loading */}
                 {text.split('').map((char, index) => (
@@ -77,5 +60,4 @@ export function LoadingText(props: props) {
             </div>
         )
     }
-    // }
 }
