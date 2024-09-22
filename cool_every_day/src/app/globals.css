@@ -1,0 +1,18 @@
+.body_container {
+    height: 100dvh;
+    width: 100vw;
+    background-image: linear-gradient(
+        90deg,
+        rgba(64, 64, 64, 1),
+        rgba(0, 0, 0, 1)
+    );
+    margin: 0% 0% 0% 0%;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: "YourFontName";
+    src: url("/src/app/fonts/DEATHNOTEFont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

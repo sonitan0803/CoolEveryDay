@@ -1,0 +1,69 @@
+{
+    "extends": [
+        "next/core-web-vitals",
+        // "plugin:storybook/recommended",
+        "prettier"
+    ],
+    "plugins": ["import", "unused-imports"],
+    "rules": {
+        // importの余計なやつ消す
+        "unused-imports/no-unused-imports": "warn", // "error" でも
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin", // node "builtin" のモジュール
+                    "external", // npm install したパッケージ
+                    "internal", // パス設定したモジュール
+                    ["parent", "sibling"], // 親階層と子階層のファイル
+                    "object", // object-imports
+                    "type", // 型だけをインポートする
+                    "index" // 同階層のファイル
+                ],
+                "newlines-between": "always",
+                "pathGroupsExcludedImportTypes": ["builtin"],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                },
+                "pathGroups": [
+                    {
+                        "pattern": "react",
+                        "group": "builtin",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "./styles.css",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    // {
+                    //     "pattern": "@storybook/**",
+                    //     "group": "external",
+                    //     "position": "before"
+                    // },
+                    {
+                        "pattern": "@mui/**",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@/components/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@/share/interface/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@/share/data/**",
+                        "group": "internal",
+                        "position": "before"
+                    }
+                ]
+            }
+        ]
+    }
+}
