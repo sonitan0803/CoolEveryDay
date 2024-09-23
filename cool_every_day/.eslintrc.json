@@ -42,6 +42,11 @@
                         "group": "internal",
                         "position": "before"
                     },
+                    {
+                        "pattern": "@/interface/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
                     // {
                     //     "pattern": "@storybook/**",
                     //     "group": "external",

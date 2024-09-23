@@ -14,7 +14,7 @@ import {
 
 import { useCount } from '@/hooks/count/count.hooks'
 
-function LoadView() {
+export function LoadView() {
     // 時間カウント
     const { progress } = useCount()
     const router = useRouter()
