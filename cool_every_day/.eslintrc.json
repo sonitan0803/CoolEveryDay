@@ -7,7 +7,7 @@
     "plugins": ["import", "unused-imports"],
     "rules": {
         // importの余計なやつ消す
-        "unused-imports/no-unused-imports": "warn", // "error" でも
+        // "unused-imports/no-unused-imports": "warn", // "error" でも
         "import/order": [
             "error",
             {

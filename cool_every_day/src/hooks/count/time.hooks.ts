@@ -1,42 +1,23 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
-interface timeInfo {
+interface TimeInfo {
     hour: string
     minutes: string
     second: string
-    day: string
+    day: number
 }
 
 function useClock() {
-    const [currentTime, setCurrentTime] = useState<Date>(new Date())
-    const [timeInfo, SetTimeInfo] = useState({
+    const [timeInfo, setTimeInfo] = useState<TimeInfo>({
         hour: '--',
         minutes: '--',
         second: '--',
-        day: '--',
+        day: 0,
     })
 
-    useEffect(() => {
-        SetTimeInfo({
-            hour: currentTime.getHours().toString(),
-            minutes: currentTime.getMinutes().toString(),
-            second: currentTime.getSeconds().toString(),
-            day: GetDay(),
-        })
-    }, [currentTime])
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentTime(new Date()) // 毎秒現在時刻を更新
-        }, 1000)
-
-        return () => clearInterval(intervalId) // コンポーネントがアンマウントされたらクリーンアップ
-    }, [])
-
-    // 曜日取得
-    const GetDay = (): string => {
-        const day = currentTime.getDay()
+    // 曜日取得をuseCallbackでメモ化
+    const GetDay = (day: number) => {
         switch (day) {
             case 0:
                 return 'Sun'
@@ -57,10 +38,32 @@ function useClock() {
         }
     }
 
+    // hour, minutes, secondをメモ化
+    const memoizedHour = useMemo(() => timeInfo.hour, [timeInfo.hour])
+    const memoizedMinutes = useMemo(() => timeInfo.minutes, [timeInfo.minutes])
+    const memoizedSecond = useMemo(() => timeInfo.second, [timeInfo.second])
+    const memoizedDay = useMemo(() => GetDay(timeInfo.day), [timeInfo.day])
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            const now = new Date()
+            setTimeInfo({
+                hour: now.getHours().toString().padStart(2, '0'),
+                minutes: now.getMinutes().toString().padStart(2, '0'),
+                second: now.getSeconds().toString().padStart(2, '0'),
+                day: now.getDay(), // 曜日を取得する場合はここで処理を追加
+            })
+        }, 1000)
+
+        return () => clearInterval(intervalId)
+    }, [])
+
     return {
-        currentTime,
         timeInfo,
-        GetDay,
+        memoizedHour,
+        memoizedMinutes,
+        memoizedSecond,
+        memoizedDay,
     }
 }
 

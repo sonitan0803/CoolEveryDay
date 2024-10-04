@@ -6,8 +6,10 @@ function EveryDayView() {
     return (
         <div>
             <main>
-                <TimeText />
-                <WeatherView />
+                <div style={{ height: '30%', width: '30%', marginTop: '5%' }}>
+                    <TimeText />
+                    <WeatherView />
+                </div>
             </main>
         </div>
     )
